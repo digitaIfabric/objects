@@ -5,6 +5,7 @@ var salesTaxRates = {
   BC: 0.12,
   SK: 0.10
 };
+// "using alberta as a key to access data"
 
 var companySalesData = [
   {
@@ -40,13 +41,13 @@ function calculateSalesTax(salesData, taxRates) {
     let name = company["name"];
     let province = company["province"];
 
-    // If it exists, add to it
-    if (results[name]){
+    // If it exists, access it's value add to it
+    if ( results[name] ){
       results[name]["totalSales"] += province_sales;
       // Call calculate tax function on each company
       results[name]["totalTaxes"] += calculateTax(province_sales , taxRates[province]);
     } else{
-    // If it doesn't exist, define it
+    // If it doesn't exist, define it and add existing value
       results[name] = {
       totalSales: province_sales,
       // Call calculate tax function on each company
@@ -90,3 +91,24 @@ console.log(results);
   }
 }
 */
+
+/* JSON file:
+[
+  {name: Telus,
+   totalSales: 1300
+   totalTaxes: 144
+  },
+  {name: Bombardier,
+   totalSales: 800,
+   totalTaxes: 40
+  }
+]
+*/
+
+
+// Known object House.numOfWindows
+// var numbr = "numOfWindws";
+// House["numOfWindows"]
+// House[numbr]
+// Literal
+// Need to know the key
